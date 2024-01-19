@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm_with_provider/utils/routes/routes.dart';
+import 'package:mvvm_with_provider/utils/routes/routes_name.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,13 +15,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme:ThemeData(
         primarySwatch:Colors.red,
-      ),
-      home:Scaffold(
-        appBar:AppBar(
-          title:Text('My App'),
 
-        )
-      )
+
+      ),
+
+      initialRoute: RoutesName.home,
+      onGenerateRoute: Routes.getRoutes,
     );
   }
 }
