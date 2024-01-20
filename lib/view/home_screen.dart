@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: InkWell(
           onTap: (){
 
-            Utils.toastMessage('Hello');
+           Utils.showFlushBarError('No Internet Connection', context);
 
           },
 
