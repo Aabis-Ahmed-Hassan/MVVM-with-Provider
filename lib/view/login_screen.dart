@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TextFormField(
@@ -77,7 +77,28 @@ class _LoginScreenState extends State<LoginScreen> {
               RoundButton(
                   title: 'Login',
                   onPress: () {
-                    print('Button 1');
+
+
+
+
+                    if(_emailController.text.isEmpty) {
+                      
+                      Utils.showSnackBar('Please enter your email', context);
+                      
+                    }
+                    else if(_passwordController.text.isEmpty) {
+                      Utils.showSnackBar('Please Enter your password', context);
+                      
+                      
+                    }
+                    else if(_passwordController.text.length < 6) {
+                      
+                      Utils.showSnackBar('Password should be of 6 characters atleast!', context);
+                    }
+                    else{
+                      print('Api hit');
+                    }
+
                   }),
 
             ],
