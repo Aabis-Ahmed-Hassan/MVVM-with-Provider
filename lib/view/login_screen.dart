@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_with_provider/res/components/round_button.dart';
 import 'package:mvvm_with_provider/utils/utils.dart';
+import 'package:mvvm_with_provider/view_model/auth_view_model.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -25,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height * 1;
 
+    final authViewMode = Provider.of<AuthViewModel>(context);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red,
@@ -76,31 +79,27 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               RoundButton(
                   title: 'Login',
+                  loading: authViewMode.getLoading,
                   onPress: () {
-
-
-
-
-                    if(_emailController.text.isEmpty) {
-                      
+                    if (_emailController.text.isEmpty) {
                       Utils.showSnackBar('Please enter your email', context);
-                      
-                    }
-                    else if(_passwordController.text.isEmpty) {
+                    } else if (_passwordController.text.isEmpty) {
                       Utils.showSnackBar('Please Enter your password', context);
-                      
-                      
-                    }
-                    else if(_passwordController.text.length < 6) {
-                      
-                      Utils.showSnackBar('Password should be of 6 characters atleast!', context);
-                    }
-                    else{
+                    } else if (_passwordController.text.length < 6) {
+                      Utils.showSnackBar(
+                          'Password should be of 6 characters atleast!',
+                          context);
+                    } else {
                       print('Api hit');
+
+                      Map data = {
+                        'email': _emailController.text.toString(),
+                        'password': _passwordController.text.toString(),
+                      };
+
+                      authViewMode.loginApi(data, context);
                     }
-
                   }),
-
             ],
           ),
         ));
