@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm_with_provider/res/components/round_button.dart';
 import 'package:mvvm_with_provider/utils/utils.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -22,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height * 1;
 
     return Scaffold(
         appBar: AppBar(
@@ -32,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TextFormField(
@@ -68,7 +70,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     );
-                  })
+                  }),
+              SizedBox(
+                height: height * 0.1,
+              ),
+              RoundButton(
+                  title: 'Login',
+                  onPress: () {
+                    print('Button 1');
+                  }),
+
             ],
           ),
         ));
