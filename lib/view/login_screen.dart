@@ -18,8 +18,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   FocusNode dummyFieldFocusNode = FocusNode();
 
+  ValueNotifier<bool> showPassword = ValueNotifier<bool>(true);
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red,
@@ -36,24 +39,36 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _emailController,
                 focusNode: emailFocusNode,
                 onFieldSubmitted: (value) {
-                  Utils.FocusNodeMethod(emailFocusNode , passwordFocusNode, context);
+                  Utils.FocusNodeMethod(
+                      emailFocusNode, passwordFocusNode, context);
                 },
                 decoration: InputDecoration(
                   hintText: 'Email',
                   prefixIcon: Icon(Icons.alternate_email),
                 ),
               ),
-              TextFormField(
-                controller: _passwordController,
-                focusNode: passwordFocusNode,
-                obscureText: true,
-                obscuringCharacter: '*',
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  prefixIcon: Icon(Icons.password),
-                  suffixIcon: Icon(Icons.visibility_off_outlined),
-                ),
-              ),
+              ValueListenableBuilder(
+                  valueListenable: showPassword,
+                  builder: (context, value, child) {
+                    return TextFormField(
+                      controller: _passwordController,
+                      focusNode: passwordFocusNode,
+                      obscureText: showPassword.value,
+                      obscuringCharacter: '*',
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        prefixIcon: Icon(Icons.password),
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            showPassword.value = !showPassword.value;
+                          },
+                          child: Icon(showPassword.value
+                              ? Icons.visibility
+                              : Icons.visibility_off_outlined),
+                        ),
+                      ),
+                    );
+                  })
             ],
           ),
         ));
