@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm_with_provider/utils/routes/routes_name.dart';
 import 'package:mvvm_with_provider/view/home_screen.dart';

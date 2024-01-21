@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
 
       ),
 
-      initialRoute: RoutesName.home,
+      initialRoute: RoutesName.login,
       onGenerateRoute: Routes.getRoutes,
     );
   }
