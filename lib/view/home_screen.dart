@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text('My App'),
           centerTitle: true,
           backgroundColor: AppColors.defaultColor,
+          automaticallyImplyLeading: false,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
