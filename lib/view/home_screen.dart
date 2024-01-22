@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mvvm_with_provider/res/Colors.dart';
 import 'package:mvvm_with_provider/res/components/round_button.dart';
 import 'package:mvvm_with_provider/utils/routes/routes_name.dart';
@@ -17,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('My App'),
+          title: const Text('My App'),
           centerTitle: true,
           backgroundColor: AppColors.defaultColor,
         ),
@@ -25,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
+            const Center(
               child: Text(
                 'HomePage',
                 style: TextStyle(

@@ -14,7 +14,7 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
-  TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
   FocusNode emailFocusNode = FocusNode();
@@ -32,7 +32,7 @@ class _SignUpViewState extends State<SignUpView> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red,
-          title: Text('Sign Up'),
+          title: const Text('Sign Up'),
           centerTitle: true,
         ),
         body: Padding(
@@ -48,7 +48,7 @@ class _SignUpViewState extends State<SignUpView> {
                   Utils.FocusNodeMethod(
                       emailFocusNode, passwordFocusNode, context);
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Email',
                   prefixIcon: Icon(Icons.alternate_email),
                 ),
@@ -63,7 +63,7 @@ class _SignUpViewState extends State<SignUpView> {
                       obscuringCharacter: '*',
                       decoration: InputDecoration(
                         hintText: 'Password',
-                        prefixIcon: Icon(Icons.password),
+                        prefixIcon: const Icon(Icons.password),
                         suffixIcon: InkWell(
                           onTap: () {
                             showPassword.value = !showPassword.value;
@@ -108,7 +108,7 @@ class _SignUpViewState extends State<SignUpView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Already have an account? ",
                     style: TextStyle(fontSize: 16),
                   ),
@@ -117,7 +117,7 @@ class _SignUpViewState extends State<SignUpView> {
 
                       Navigator.pop(context);
                       },
-                      child: Text(
+                      child: const Text(
                         "Login",
                         style: TextStyle(
                           fontSize: 16,

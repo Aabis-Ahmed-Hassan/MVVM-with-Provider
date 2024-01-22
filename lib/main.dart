@@ -5,7 +5,7 @@ import 'package:mvvm_with_provider/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         ),
 
 
-
+debugShowCheckedModeBanner: false,
         initialRoute: RoutesName.login,
         onGenerateRoute: Routes.getRoutes,
       ),

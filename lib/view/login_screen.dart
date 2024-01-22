@@ -14,8 +14,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   FocusNode emailFocusNode = FocusNode();
 
@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red,
-          title: Text('Login'),
+          title: const Text('Login'),
           centerTitle: true,
           automaticallyImplyLeading: false,
         ),
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Utils.FocusNodeMethod(
                       emailFocusNode, passwordFocusNode, context);
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Email',
                   prefixIcon: Icon(Icons.alternate_email),
                 ),
@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscuringCharacter: '*',
                       decoration: InputDecoration(
                         hintText: 'Password',
-                        prefixIcon: Icon(Icons.password),
+                        prefixIcon: const Icon(Icons.password),
                         suffixIcon: InkWell(
                           onTap: () {
                             showPassword.value = !showPassword.value;
@@ -113,13 +113,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
-                  Text("Don't have an account? ", style:TextStyle(fontSize: 16),),
+                  const Text("Don't have an account? ", style:TextStyle(fontSize: 16),),
                   InkWell(
                       onTap: (){
                         Navigator.pushNamed(context, RoutesName.signup);
 
                       },
-                      child: Text("Sign Up", style:TextStyle(fontSize: 16 , decoration: TextDecoration.underline, color: AppColors.defaultColor,),)),
+                      child: const Text("Sign Up", style:TextStyle(fontSize: 16 , decoration: TextDecoration.underline, color: AppColors.defaultColor,),)),
 
 
 
