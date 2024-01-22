@@ -6,14 +6,14 @@ import 'package:mvvm_with_provider/utils/utils.dart';
 import 'package:mvvm_with_provider/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpView extends StatefulWidget {
+  const SignUpView({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpView> createState() => _SignUpViewState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpViewState extends State<SignUpView> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -32,9 +32,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red,
-          title: Text('Login'),
+          title: Text('Sign Up'),
           centerTitle: true,
-          automaticallyImplyLeading: false,
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -80,8 +79,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: height * 0.035,
               ),
               RoundButton(
-                  title: 'Login',
-                  loading: authViewMode.getLoadingForLogin,
+                  title: 'Sign Up',
+                  loading: authViewMode.getLoadingForSignUp,
                   onPress: () {
                     if (_emailController.text.isEmpty) {
                       Utils.showSnackBar('Please enter your email', context);
@@ -99,39 +98,35 @@ class _LoginScreenState extends State<LoginScreen> {
                         'password': _passwordController.text.toString(),
                       };
 
-                      authViewMode.loginApi(data, context);
+                      authViewMode.signUpApi(data, context);
                     }
                   }),
-
               SizedBox(
                 height: height * 0.035,
               ),
-
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-
-                  Text("Don't have an account? ", style:TextStyle(fontSize: 16),),
+                  Text(
+                    "Already have an account? ",
+                    style: TextStyle(fontSize: 16),
+                  ),
                   InkWell(
-                      onTap: (){
-                        Navigator.pushNamed(context, RoutesName.signup);
+                      onTap: () {
 
+                      Navigator.pop(context);
                       },
-                      child: Text("Sign Up", style:TextStyle(fontSize: 16 , decoration: TextDecoration.underline, color: AppColors.defaultColor,),)),
-
-
-
-
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                          fontSize: 16,
+                          decoration: TextDecoration.underline,
+                          color: AppColors.defaultColor,
+                        ),
+                      )),
                 ],
               )
-
-
-
-
-
-
             ],
           ),
         ));

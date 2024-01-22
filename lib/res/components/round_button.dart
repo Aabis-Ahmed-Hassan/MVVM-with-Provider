@@ -30,7 +30,7 @@ class RoundButton extends StatelessWidget {
                   color: Colors.white,
                 )
               : Text(
-                  'Login',
+                  title,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,

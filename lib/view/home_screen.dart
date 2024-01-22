@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mvvm_with_provider/res/Colors.dart';
+import 'package:mvvm_with_provider/res/components/round_button.dart';
 import 'package:mvvm_with_provider/utils/routes/routes_name.dart';
 import 'package:mvvm_with_provider/utils/utils.dart';
 
@@ -14,23 +16,33 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
-      body: Center(
-        child: InkWell(
-          onTap: (){
-
-           Utils.showSnackBar('No Internet Connection', context);
-
-          },
-
-          child: Container(
-            height: 50,
-            width: 50,
-            color: Colors.indigo ,
-            child:Center(child:Text('Click Me'),),
-          ),
+        appBar: AppBar(
+          title: Text('My App'),
+          centerTitle: true,
+          backgroundColor: AppColors.defaultColor,
         ),
-      ),
-    );
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(
+                'HomePage',
+                style: TextStyle(
+                  fontSize: 30,
+                ),
+              ),
+            ),
+            SizedBox(
+
+              height: MediaQuery.of(context).size.height * 0.025,
+            ),
+            RoundButton(
+                title: 'Logout',
+                onPress: () {
+                  Navigator.pushNamed(context, RoutesName.login);
+                })
+          ],
+        ));
   }
 }

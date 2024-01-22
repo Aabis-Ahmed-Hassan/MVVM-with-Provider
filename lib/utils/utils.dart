@@ -1,4 +1,3 @@
-
 import 'package:another_flushbar/flushbar.dart';
 import 'package:another_flushbar/flushbar_route.dart';
 import 'package:flutter/material.dart';
@@ -25,15 +24,20 @@ class Utils {
 
   static showSnackBar(String message, BuildContext context) {
     return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(message),
+      content: Text(
+        message,
+        style: TextStyle(
+          fontSize: 16,
+        ),
+      ),
       backgroundColor: Colors.red,
       elevation: 1,
     ));
   }
 
-  static FocusNodeMethod(FocusNode current, FocusNode moveTo, BuildContext context) {
-
-  current.unfocus();
+  static FocusNodeMethod(
+      FocusNode current, FocusNode moveTo, BuildContext context) {
+    current.unfocus();
     FocusScope.of(context).requestFocus(moveTo);
   }
 }
